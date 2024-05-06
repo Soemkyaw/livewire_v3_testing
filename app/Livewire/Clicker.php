@@ -25,6 +25,9 @@ class Clicker extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
+        $this->reset(['name','email','password']);
+
+        session()->flash('success', 'User successfully created.');
     }
 
 
