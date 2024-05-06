@@ -8,27 +8,25 @@ use Illuminate\Support\Facades\Hash;
 
 class Clicker extends Component
 {
-    public $title = "Hello World....";
+    public $name;
+    public $email;
+    public $password;
 
     public function createNewUser()
     {
         User::create([
-            'name' => "test 2",
-            'email' => "test2@gmail.com",
-            'password' => Hash::make("password"),
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
         ]);
     }
 
 
     public function render()
     {
-        $name = "Soe Moe Kyaw";
-        $job = "Backend developer";
-        $user = User::all();
+        $users = User::all();
         return view('livewire.clicker',[
-            'name' => $name,
-            'job' => $job,
-            'user' => $user
+            'users' => $users
         ]);
     }
 }
